@@ -32,18 +32,18 @@ Fitur CRUD sangat berguna bagi pengguna aplikasi yang dibuat. Dengan adanya CRUD
 
 Dengan adanya fitur CRUD semuanya menjadi mudah, operasi CRUD adalah manipulasi data dasar untuk database. Berikut penjelasannya :
 
--Create
+- Create
 
   Create diartikan membuat atau menambahkan, membuat atau menambahkan data menggunakan aplikasi yang sudah dibuat, ketika kita menambahkan data diaplikasi nantinya akan otomatis akan masuk kedalam database yang sudah dibuat.
   
--Read
+- Read
 
   Read diartikan menampilkan atau membaca, menampilkan atau membaca data kita tidak perlu repot untuk menampilkan data cukup dilihat menggunakan aplikasi data mana yang ingin ditampilkan maka akan tertampil.
 
--Update
+- Update
 
   Update diartikan mengubah, kita tidak perlu repot ketika ingin mengubah data, cukup menggunakan aplikasi maka akan terubah dan database otomatis akan terubah.
 
--Delete
+- Delete
 
   Delete diartikan menghapus, fitur ini digunakan untuk menghapus data yang tidak diperlukan. Kita tidak perlu repot ketika ingin menghapus data, tidak perlu menghapus data lewat database.
