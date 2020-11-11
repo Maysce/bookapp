@@ -2,86 +2,86 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Authors;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
-use App\Models\Book;
-
-class BooksController extends Controller
+class AuthorsController extends Controller
 {
     public function index()
     {
-        return Book::all();
+        return Authors::all();
     }
 
-    public function denganID($id)
+    // Menampilkan detail authors berdasarkan ID
+    public function show($id)
     {
-        $books = Book::find($id);
-
-        if ($books) {
+        if ($authors = Authors::find($id)) {
             return response()->json([
-                'message'   => 'show Books by ID',
-                'data'      => $books
+                'message' => 'show author by id',
+                'data' => $authors
             ], 200);
         } else {
             return response()->json([
-                'message'   => 'Books not Found',
+                'message' => 'author not found'
             ], 404);
         }
     }
 
+    // Menginput Buku Baru
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
-            'description' => 'required',
-            'author' => 'required'
+            'name' => 'required',
+            'gender' => 'required',
+            'biography' => 'required'
         ]);
 
-        $book = Book::create(
-            $request->only(['title', 'description', 'author'])
+        $authors = Authors::create(
+            $request->only(['name', 'gender', 'biography'])
         );
 
         return response()->json([
             'created' => true,
-            'data' => $book
+            'data' => $authors
         ], 201);
     }
 
+    // Memperbarui Buku
     public function update(Request $request, $id)
     {
         try {
-            $book = Book::findOrFail($id);
+            $authors = Authors::findOrFail($id);
         } catch (ModelNotFoundException $e) {
             return response()->json([
-                'message' => 'book not found'
+                'message' => 'author not found'
             ], 404);
         }
-
-        $book->fill(
-            $request->only(['title', 'description', 'author'])
+        $authors->fill(
+            $request->only(['name', 'gender', 'biography'])
         );
-        $book->save();
+        $authors->save();
 
         return response()->json([
             'updated' => true,
-            'data' => $book
+            'data' => $authors
         ], 200);
     }
 
+    // Menghapus Buku
     public function destroy($id)
     {
         try {
-            $book = Book::findOrFail($id);
+            $authors = Authors::findOrFail($id);
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'error' => [
-                    'message' => 'book not found'
+                    'message' => 'author not found'
                 ]
             ], 404);
         }
 
-        $book->delete();
+        $authors->delete();
 
         return response()->json([
             'deleted' => true
